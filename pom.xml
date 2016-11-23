@@ -11,6 +11,9 @@
     <properties>
         <allure.version>1.4.16</allure.version>
         <aspectj.version>1.8.5</aspectj.version>
+        <selenium.test.browser>chrome</selenium.test.browser>
+        <selenium.test.jvmargs><![CDATA[-Dbrowser=${selenium.test.browser}]]></selenium.test.jvmargs>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -84,19 +87,16 @@
                 <version>2.14</version>
                 <configuration>
                         <testFailureIgnore>false</testFailureIgnore>
-                        <argLine>
-                            -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                        </argLine>
-                        <properties>
+                    <argLine> -Xmx128m -Xms128m -XX:MaxPermSize=196m ${selenium.test.jvmargs}</argLine>
+
+                    <properties>
                             <property>
                                 <name>listener</name>
                                 <value>ru.yandex.qatools.allure.testng.AllureTestListener</value>
                             </property>
                         </properties>
 
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resourses\testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+
                 </configuration>
                 <dependencies>
                     <dependency>

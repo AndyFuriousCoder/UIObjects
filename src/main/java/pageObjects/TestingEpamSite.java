@@ -5,6 +5,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.pages.*;
 
 @JSite(domain = "https://jdi-framework.github.io/tests")
 public class TestingEpamSite extends WebSite

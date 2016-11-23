@@ -3,8 +3,11 @@ package pageObjects;
 
 import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.CheckBox;
+import com.epam.jdi.uitests.web.selenium.elements.common.TextField;
 import com.epam.jdi.uitests.web.selenium.elements.complex.Dropdown;
+import com.epam.jdi.uitests.web.selenium.elements.complex.RadioButtons;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
+import com.epam.web.matcher.junit.Assert;
 import javafx.scene.control.RadioButton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,65 +15,64 @@ import org.openqa.selenium.support.FindBy;
 
 public class MetalAndColorsComponentForm extends Form<Plate>
 {
+    //Odds radiobuttons
+    @FindBy (xpath = "//section[@id='odds-selector']/p[1]/label")
+    public Button one;
 
+    @FindBy (xpath = "//section[@id='odds-selector']/p[2]/label")
+    public Button three;
 
-    @FindBy(id = "p1")
-    public RadioButton one;
+    @FindBy(xpath = "//section[@id='odds-selector']/p[3]/label")
+    public Button five;
 
-    @FindBy(id = "p2")
-    public RadioButton three;
+    @FindBy(xpath = "//section[@id='odds-selector']/p[4]/label")
+    public Button seven;
 
-    @FindBy(id = "p3")
-    public RadioButton five;
+    //Even radiobuttons
+    @FindBy(xpath = "//section[@id='even-selector']/p[1]/label")
+    public Button two;
 
-    @FindBy(id = "p4")
-    public RadioButton seven;
+    @FindBy(xpath = "//section[@id='even-selector']/p[2]/label")
+    public Button four;
 
-    @FindBy(id = "p5")
-    public RadioButton two;
+    @FindBy(xpath = "//section[@id='even-selector']/p[3]/label")
+    public Button six;
 
-    @FindBy(id = "p6")
-    public RadioButton four;
+    @FindBy(xpath = "//section[@id='even-selector']/p[4]/label")
+    public Button eight;
 
-    @FindBy(id = "p7")
-    public RadioButton six;
-
-    @FindBy(id = "p8")
-    public RadioButton eight;
-
-    @FindBy(id = "g1")
+    //Elements checkboxes
+    @FindBy(xpath = "//section[@id='elements-checklist']/p[1]/label")
     public CheckBox water;
 
-    @FindBy(id = "g2")
+    @FindBy(xpath = "//section[@id='elements-checklist']/p[2]/label")
     public CheckBox earth;
 
-    @FindBy(id = "g3")
+    @FindBy(xpath = "//section[@id='elements-checklist']/p[3]/label")
     public CheckBox wind;
 
-    @FindBy(id = "g4")
+    @FindBy(xpath = "//section[@id='elements-checklist']/p[4]/label")
     public CheckBox fire;
 
-    @FindBy(xpath = "//button[@type='button']")
-    public Dropdown<DropdownColorsMenu> colors;
-
-    @FindBy(xpath = "//button[@type='button']")
-    public Button dropdownOpen;
-
+    // Dropdown metals
     @FindBy(xpath = "(//button[@type='button'])[2]")
     public Dropdown<Metals> metals;
 
-    @FindBy(xpath = "(//button[@type='button'])[2]")
-    public Button metalsOpen;
+    @FindBy(css = "div.form-group.metals > button.btn dropdown-toggle selectpicker btn-default firefinder-match")
+    public Button metalsButton;
 
-    @FindBy(xpath = "(//button[@type='button'])[3]")
-    public Dropdown<Food> food;
+    @FindBy(css = "div.form-group.metals > input[type=\"text\"]")
+    public TextField metalsText;
 
+    //Food
     @FindBy(xpath = "(//button[@type='button'])[3]")
     public Button foodOpen;
 
+    //Submit button
     @FindBy (id = "submit-button")
     public Button submit;
 
+    //Methods
     WebDriver driver = this.getDriver();
 
     public void submit(Plate plate)
@@ -88,10 +90,10 @@ public class MetalAndColorsComponentForm extends Form<Plate>
     {
         switch (odds)
         {
-            case 1: one.setSelected(true);
-            case 3: three.setSelected(true);
-            case 5: five.setSelected(true);
-            case 7: seven.setSelected(true);
+            case 1: one.click(); break;
+            case 3: three.click(); break;
+            case 5: five.click(); break;
+            case 7: seven.click(); break;
         }
     }
 
@@ -99,10 +101,10 @@ public class MetalAndColorsComponentForm extends Form<Plate>
     {
         switch (even)
         {
-            case 2: two.setSelected(true);
-            case 4: four.setSelected(true);
-            case 6: six.setSelected(true);
-            case 8: eight.setSelected(true);
+            case 2: two.click(); break;
+            case 4: four.click(); break;
+            case 6: six.click(); break;
+            case 8: eight.click(); break;
         }
     }
 
@@ -122,23 +124,32 @@ public class MetalAndColorsComponentForm extends Form<Plate>
 
     public void selectColor(String colorName)
     {
-        dropdownOpen.click();
+        driver.findElement(By.xpath("//button[@type='button']")).click();
         driver.findElement(By.linkText(colorName)).click();
     }
 
     public void selectMetal(String metalName)
     {
-        metalsOpen.click();
-        driver.findElement(By.linkText(metalName)).click();
+        metalsText.clear();
+        metalsText.input(metalName);
     }
 
     public void selectFood(String food)
     {
         foodOpen.click();
-        if(food.equalsIgnoreCase("cucumber")) driver.findElement(By.id("g5")).click();
-        if(food.equalsIgnoreCase("tomato")) driver.findElement(By.id("g6")).click();
-        if(food.equalsIgnoreCase("salad")) driver.findElement(By.id("g7")).click();
-        if(food.equalsIgnoreCase("onion")) driver.findElement(By.id("g8")).click();
+        if(food.equalsIgnoreCase("cucumber")) driver.findElement(By.xpath("//div[@id='salad-dropdown']/ul/li[1]/a/label")).click();
+        if(food.equalsIgnoreCase("tomato")) driver.findElement(By.xpath("//div[@id='salad-dropdown']/ul/li[2]/a/label")).click();
+        if(food.equalsIgnoreCase("salad")) driver.findElement(By.xpath("//div[@id='salad-dropdown']/ul/li[3]/a/label")).click();
+        if(food.equalsIgnoreCase("onion")) driver.findElement(By.xpath("//div[@id='salad-dropdown']/ul/li[4]/a/label")).click();
+    }
+
+    public void checkResult(Plate plate)
+    {
+        Assert.contains(driver.findElement(By.cssSelector("li.summ-res")).getText(), (plate.odds + plate.even) + "");
+        Assert.contains(driver.findElement(By.cssSelector("li.elem-res")).getText(), plate.element);
+        Assert.contains(driver.findElement(By.cssSelector("li.col-res")).getText(), plate.colorName);
+        Assert.contains(driver.findElement(By.cssSelector("li.met-res")).getText(), plate.col);
+        Assert.contains(driver.findElement(By.cssSelector("li.sal-res")).getText(), plate.salad);
     }
 
 }
