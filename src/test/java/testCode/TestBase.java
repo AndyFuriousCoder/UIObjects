@@ -16,8 +16,6 @@ import static pageObjects.pages.TestingEpamSite.homePage;
 
 public class TestBase extends TestNGBase
 {
-
-    public static WebDriver driver = new ChromeDriver();
     @BeforeSuite(alwaysRun = true)
     public static void setUp() throws Exception {
         WebSite.init(TestingEpamSite.class);
