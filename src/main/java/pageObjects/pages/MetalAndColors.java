@@ -25,22 +25,22 @@ public class MetalAndColors extends WebPage
 
     public void checkNext()
     {
-        Assert.areEquals(this.getDriver().getTitle(), "Metal and Colors");
+        Assert.areEquals(MetalAndColors.getTitle(), "Metal and Colors");
     }
 
     public void checkPrevious()
     {
-        Assert.areEquals(this.getDriver().getTitle(), "Different Element");
+        Assert.areEquals(DifferentElement.getTitle(), "Different Element");
     }
 
     public void checkFirst()
     {
-        Assert.areEquals(this.getDriver().getTitle(), "Contact Form");
+        Assert.areEquals(ContactForm.getTitle(), "Contact Form");
     }
 
     public  void checkLast()
     {
-        Assert.areEquals(this.getDriver().getTitle(), "Metal and Colors");
+        Assert.areEquals(MetalAndColors.getTitle(), "Metal and Colors");
     }
 
 }
