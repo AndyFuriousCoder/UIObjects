@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import pageObjects.pages.TestingEpamSite;
 
 import static com.epam.jdi.uitests.core.settings.JDISettings.logger;
+import static com.epam.jdi.uitests.web.selenium.driver.WebDriverUtils.killAllRunWebDrivers;
 import static pageObjects.pages.TestingEpamSite.homePage;
 
 public class TestBase extends TestNGBase
@@ -28,6 +29,7 @@ public class TestBase extends TestNGBase
     @AfterSuite(alwaysRun = true)
     public void tearDown()
     {
-        homePage.getDriver().close();
+        killAllRunWebDrivers();
+        //homePage.getDriver().close();
     }
 }
