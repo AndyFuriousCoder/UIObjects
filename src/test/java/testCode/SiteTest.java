@@ -1,10 +1,9 @@
 package testCode;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObjects.Plate;
-import static pageObjects.TestingEpamSite.*;
+import static pageObjects.pages.TestingEpamSite.*;
 
 
 public class SiteTest extends TestBase

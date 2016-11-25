@@ -1,17 +1,15 @@
 package testCode;
 
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
-import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.GetElement;
 import com.epam.jdi.uitests.web.testng.testRunner.TestNGBase;
 import com.epam.web.matcher.verify.Verify;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import pageObjects.TestingEpamSite;
+import pageObjects.pages.TestingEpamSite;
 
 import static com.epam.jdi.uitests.core.settings.JDISettings.logger;
-import static pageObjects.TestingEpamSite.homePage;
+import static pageObjects.pages.TestingEpamSite.homePage;
 
 public class TestBase extends TestNGBase
 {

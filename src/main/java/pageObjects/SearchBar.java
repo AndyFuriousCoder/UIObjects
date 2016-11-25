@@ -8,7 +8,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.Search;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 
-import static pageObjects.TestingEpamSite.supportPage;
+import static pageObjects.pages.TestingEpamSite.supportPage;
 
 public class SearchBar extends Search implements ISearch
 {
