@@ -7,16 +7,13 @@ import org.openqa.selenium.support.FindBy;
 
 import static com.epam.web.matcher.testng.Assert.assertTrue;
 
-public class LoginForm extends Form
+public class LoginForm extends Form<User>
 {
     @FindBy(id = "Login")
     private TextField login;
 
     @FindBy(id = "Password")
     private TextField password;
-
-    @FindBy(css = "li.dropdown.uui-profile-menu > a.dropdown-toggle")
-    public Button loginFormOpenButton;
 
     @FindBy(xpath = "//button[@type='submit']")
     private Button loginButton;
@@ -27,6 +24,9 @@ public class LoginForm extends Form
     @FindBy(css = "span.login-txt")
     private TextField loginFaild;
 
+    @FindBy(css = "li.dropdown.uui-profile-menu > a.dropdown-toggle")
+    public Button loginFormOpenButton;
+
     public void submit(String loginText, String passwordText)
     {
         login.newInput(loginText);
@@ -34,14 +34,11 @@ public class LoginForm extends Form
         loginButton.click();
     }
 
-    public void checkingAuthorize(boolean status, String loginText, String passwordText)
+    public void checkingLoginResult(User user)
     {
-        submit(loginText, passwordText);
-
-        if(status)
+        if(user.loginResult)
         {
             assertTrue(logoutButton.isDisplayed());
-            logoutButton.click();
         }
         else
         {
@@ -52,5 +49,11 @@ public class LoginForm extends Form
     public void submitLogin()
     {
         submit("epam", "1234");
+    }
+
+    public void loginOut()
+    {
+        if(logoutButton.isDisplayed()) logoutButton.click();
+        if(loginButton.isDisplayed()) loginFormOpenButton.click();
     }
 }

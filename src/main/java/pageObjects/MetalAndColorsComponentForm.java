@@ -5,13 +5,12 @@ import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.CheckBox;
 import com.epam.jdi.uitests.web.selenium.elements.common.TextField;
 import com.epam.jdi.uitests.web.selenium.elements.complex.Dropdown;
-import com.epam.jdi.uitests.web.selenium.elements.complex.RadioButtons;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import com.epam.web.matcher.junit.Assert;
-import javafx.scene.control.RadioButton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.enums.Metals;
 
 public class MetalAndColorsComponentForm extends Form<Plate>
 {

@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.enums;
 
 
 public enum Food {

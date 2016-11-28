@@ -7,8 +7,10 @@ import com.epam.jdi.uitests.web.selenium.elements.common.TextField;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Search;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.enums.Titles;
 
-import static pageObjects.pages.TestingEpamSite.supportPage;
+import static com.epam.jdi.uitests.web.selenium.elements.composite.WebPage.getTitle;
+import static pageObjects.pages.TestedEpamSite.supportPage;
 
 public class SearchBar extends Search implements ISearch
 {
@@ -18,16 +20,15 @@ public class SearchBar extends Search implements ISearch
     @FindBy(css = "span.icon-search")
     public Button searchButton;
 
-    public void search(String text)
+    public void searchByStringText(String text)
     {
         searchText.clear();
         searchText.input(text);
         searchButton.click();
-        checkSearchResult();
     }
 
     public void checkSearchResult()
     {
-        Assert.areEquals(supportPage.getTitle(), "Support");
+        Assert.areEquals(getTitle(), Titles.SUPPORT.value);
     }
 }

@@ -1,16 +1,15 @@
 package pageObjects.pages;
 
 
-import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Pagination;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
 import com.epam.web.matcher.junit.Assert;
-import javafx.scene.control.RadioButton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.MetalAndColorsComponentForm;
+import pageObjects.enums.Titles;
 
-public class MetalAndColors extends WebPage
+public class MetalAndColorsPage extends WebPage
 {
 
     @FindBy(css = "div.main-content")
@@ -25,22 +24,22 @@ public class MetalAndColors extends WebPage
 
     public void checkNext()
     {
-        Assert.areEquals(MetalAndColors.getTitle(), "Metal and Colors");
+        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
     }
 
     public void checkPrevious()
     {
-        Assert.areEquals(DifferentElement.getTitle(), "Different Element");
+        Assert.areEquals(DifferentElementPage.getTitle(), Titles.DIFFERENT_ELEMENTS.value);
     }
 
     public void checkFirst()
     {
-        Assert.areEquals(ContactForm.getTitle(), "Contact Form");
+        Assert.areEquals(ContactFormPage.getTitle(), Titles.CONTACT_FORM.value);
     }
 
     public  void checkLast()
     {
-        Assert.areEquals(MetalAndColors.getTitle(), "Metal and Colors");
+        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
     }
 
 }

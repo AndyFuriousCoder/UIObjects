@@ -8,7 +8,9 @@ public class SearchData
     @DataProvider(name = "SearchTest")
     public static Object[][] search1() {
         return new Object[][] {{"Support"},
-                              {"TestNG"},
-                              {"Selenium"}};
+                                {"TestNG"},
+                                {"Allure"},
+                                {"Selenium"},
+                                {"Jenkins"}};
     }
 }
