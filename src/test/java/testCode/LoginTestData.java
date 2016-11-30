@@ -11,7 +11,7 @@ public class LoginTestData
     public static Object[][] test1() {
         return new Object[][] {{new User("Fire", "1234", false)},
                                 {new User("Piter", "Chailovsky", false)},
-                                {new User("epam", "1234", true)},
+                                {new User("Login", "1234", false)},
                                 {new User("epam", "123", false)}};
     }
 

@@ -2,25 +2,26 @@ package testCode;
 
 import org.testng.annotations.Test;
 import pageObjects.*;
-import pageObjects.enums.SiteMenu;
-import pageObjects.enums.SubMenu;
-import pageObjects.enums.Titles;
+import pageObjects.enums.*;
+
 import static pageObjects.pages.TestedEpamSite.*;
 
 
 public class SiteTest extends TestBase
 {
     // 1) Тест для логина
-    @Test(enabled = false, dataProviderClass = LoginTestData.class, dataProvider = "LoginTest")
+    @Test(enabled = true, dataProviderClass = LoginTestData.class, dataProvider = "LoginTest")
     public void checkingLoginTest(User user)
     {
+        homePage.open();
         homePage.loginForm.loginOut();
         homePage.loginForm.login(user);
         homePage.loginForm.checkingLoginResult(user);
+        homePage.loginForm.submitLogin();
     }
 
     // 2) Тест навигации по главному меню
-    @Test(enabled = false, dataProviderClass = CheckingMenuData.class, dataProvider = "CheckingMenuTest")
+    @Test(enabled = true, dataProviderClass = CheckingMenuData.class, dataProvider = "CheckingMenuTest")
     public void checkingMenu(SiteMenu siteMenu, Titles titles)
     {
         menu.select(siteMenu);
@@ -28,7 +29,7 @@ public class SiteTest extends TestBase
     }
 
     // 3) Тест навигации по меню сервиса
-    @Test(enabled = false, dataProviderClass = CheckingSubMenuData.class, dataProvider = "CheckingSubMenuTest")
+    @Test(enabled = true, dataProviderClass = CheckingSubMenuData.class, dataProvider = "CheckingSubMenuTest")
     public void checkingSubMenu(SubMenu subMenuElement, Titles titles)
     {
         menu.select(SiteMenu.SERVICE);
@@ -37,7 +38,7 @@ public class SiteTest extends TestBase
     }
 
     // 4) Тест для поисковой строки сверху
-    @Test(enabled = false, dataProviderClass = SearchData.class, dataProvider = "SearchTest")
+    @Test(enabled = true, dataProviderClass = SearchData.class, dataProvider = "SearchTest")
     public void checkingSearch(String text)
     {
         openSearchBar.click();
@@ -46,7 +47,7 @@ public class SiteTest extends TestBase
     }
 
     // 5) Тест для проверкии ContactForm
-    @Test(enabled = false, dataProviderClass = ContactData.class, dataProvider = "ContactFormTest")
+    @Test(enabled = true, dataProviderClass = ContactData.class, dataProvider = "ContactFormTest")
     public void checkingContactForm(Contact contact)
     {
         contactFormPage.open();
@@ -55,7 +56,7 @@ public class SiteTest extends TestBase
     }
 
     // 6) Тест для страницы Different Elements
-    @Test(enabled = false, dataProviderClass = DifferentElementsData.class, dataProvider = "DifferentElementsTest")
+    @Test(enabled = true, dataProviderClass = DifferentElementsData.class, dataProvider = "DifferentElementsTest")
     public void checkingDifferentElementsForm(DifferentElement differentElement)
     {
         differentElementPage.open();
@@ -64,16 +65,17 @@ public class SiteTest extends TestBase
     }
 
     // 7) Тест для страницы Metals and Colors
-    @Test(enabled = false, dataProviderClass = MetalAndColorsData.class, dataProvider = "MetalAndColorsTest")
-    public void checkingMetalAndColorsForm(Plate plate) {
+    @Test(enabled = true, dataProviderClass = MetalAndColorsData.class, dataProvider = "MetalAndColorsTest")
+    public void checkingMetalAndColorsForm(Plate plate)
+    {
         metalAndColorsPage.open();
-        metalAndColorsPage.componentForm.submit(plate);
+        metalAndColorsPage.componentForm.selectElements(plate);
         metalAndColorsPage.componentForm.checkResult(plate);
     }
 
     // 8) Тест навигации на странице Metals and Colors, Contact Form
-    @Test(enabled = false)
-    public void checkingNavigation()
+    @Test(enabled = true)
+    public void checkingSiteNavigation()
     {
         metalAndColorsPage.open();
         metalAndColorsPage.navigation.next(); //переход вправо
@@ -90,13 +92,23 @@ public class SiteTest extends TestBase
     }
 
     // 9) Тест страницы Dates
-    @Test(enabled = false, dataProviderClass = DatesInputData.class, dataProvider = "DatesPageTest")
+    @Test(enabled = true, dataProviderClass = DatesInputData.class, dataProvider = "DatesPageTest")
     public void checkingDatesPage(DatesInput datesInput)
     {
         datesPage.open();
         datesPage.datesPageForm.inputDataOnPage(datesInput);
         datesPage.datesPageForm.checkResult(datesInput);
 
+    }
+
+    //10) Тест страницы Complex Table
+    @Test(enabled = true, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest")
+    public void checkingComplexTable(TableColumns tableColumns)
+    {
+        complexTablePage.open();
+        complexTablePage.complexPageForm.selectNothingColumns();
+        complexTablePage.complexPageForm.selectColumn(tableColumns);
+        complexTablePage.complexPageForm.checkColumnVisible(tableColumns);
     }
 
 }

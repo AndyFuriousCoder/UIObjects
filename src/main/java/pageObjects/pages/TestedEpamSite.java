@@ -45,6 +45,12 @@ public class TestedEpamSite extends WebSite
     @JPage (url = "/page4.htm", title = "Dates")
     public static DatesPage datesPage;
 
+    @JPage(url = "/page5.htm", title = "Complex Table")
+    public static ComplexTablePage complexTablePage;
+
+    @JPage(url = "/page6.htm", title = "Simple Table")
+    public static SimpleTablePage simpleTablePage;
+
     @JPage (url = "/page8.htm", title = "Different Element")
     public static DifferentElementPage differentElementPage;
 

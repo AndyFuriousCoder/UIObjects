@@ -53,6 +53,7 @@ public class LoginForm extends Form<User>
 
     public void loginOut()
     {
+        loginFormOpenButton.click();
         if(logoutButton.isDisplayed()) logoutButton.click();
         if(loginButton.isDisplayed()) loginFormOpenButton.click();
     }

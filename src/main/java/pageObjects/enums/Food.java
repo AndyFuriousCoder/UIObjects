@@ -3,5 +3,5 @@ package pageObjects.enums;
 
 public enum Food {
 
-    CUCUMBER, TOMATO, SALAD, ONION;
+    Cucumber, Tomato, Salad, Onion;
 }

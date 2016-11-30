@@ -1,22 +1,23 @@
 package pageObjects;
 
+import pageObjects.enums.*;
+
 public class Plate
 {
 
-    public int odds;
-    public int even;
-    public String element;
-    public String colorName;
-    public String col;
-    public String salad;
+    public Odds odds;
+    public Even even;
+    public NaturalElements naturalElements;
+    public Colors colors;
+    public Metals metals;
+    public Food food;
 
-
-    public Plate(int odds, int even, String element, String colorName, String col, String salad) {
+    public Plate(Odds odds, Even even, NaturalElements naturalElements, Colors colors, Metals metals, Food food) {
         this.odds = odds;
         this.even = even;
-        this.element = element;
-        this.colorName = colorName;
-        this.col = col;
-        this.salad = salad;
+        this.naturalElements = naturalElements;
+        this.colors = colors;
+        this.metals = metals;
+        this.food = food;
     }
 }
