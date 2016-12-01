@@ -1,9 +1,10 @@
-package pageObjects;
+package pageObjects.composite;
 
 import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.TextField;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.business.User;
 
 import static com.epam.web.matcher.testng.Assert.assertTrue;
 

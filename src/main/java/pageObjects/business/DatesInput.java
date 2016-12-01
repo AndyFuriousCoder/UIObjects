@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.business;
 
 public class DatesInput
 {

@@ -1,8 +1,9 @@
 package testCode;
 
 import org.testng.annotations.Test;
-import pageObjects.*;
+import pageObjects.business.*;
 import pageObjects.enums.*;
+import testCode.testData.*;
 
 import static pageObjects.pages.TestedEpamSite.*;
 

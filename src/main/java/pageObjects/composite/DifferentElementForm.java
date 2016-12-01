@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.composite;
 
 import com.epam.jdi.uitests.core.interfaces.common.IButton;
 import com.epam.jdi.uitests.core.interfaces.complex.ICheckList;
@@ -8,9 +8,11 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import com.epam.web.matcher.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.business.DifferentElement;
 import pageObjects.enums.Colors;
 import pageObjects.enums.Metals;
 import pageObjects.enums.NaturalElements;
+import pageObjects.enums.Titles;
 
 public class DifferentElementForm extends Form<DifferentElement>
 {
@@ -40,8 +42,22 @@ public class DifferentElementForm extends Form<DifferentElement>
 
     public void checkDifferentElementSelection(DifferentElement differentElement)
     {
-        //Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[5]")).getText(), differentElement.naturalElements.toString());
-        //Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[4]")).getText(), differentElement.metals.toString());
+        try
+        {
+            Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[5]")).getText(), differentElement.naturalElements.toString());
+        }
+        catch(Exception e)
+        {
+            System.out.println("Verify error on " + Titles.DIFFERENT_ELEMENTS.value + " page: checkbox element " + differentElement.naturalElements);
+        }
+        try
+        {
+            Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[4]")).getText(), differentElement.metals.toString());
+        }
+        catch(Exception e)
+            {
+                System.out.println("Verify error on " + Titles.DIFFERENT_ELEMENTS.value + " page: radiobutton element " + differentElement.metals);
+            }
         Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[3]")).getText(), differentElement.colors.toString());
     }
 

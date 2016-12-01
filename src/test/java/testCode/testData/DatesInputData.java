@@ -1,8 +1,8 @@
-package testCode;
+package testCode.testData;
 
 
 import org.testng.annotations.DataProvider;
-import pageObjects.DatesInput;
+import pageObjects.business.DatesInput;
 
 public class DatesInputData
 {

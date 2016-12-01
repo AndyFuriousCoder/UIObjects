@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.composite;
 
 
 import com.epam.jdi.uitests.core.interfaces.complex.ISearch;

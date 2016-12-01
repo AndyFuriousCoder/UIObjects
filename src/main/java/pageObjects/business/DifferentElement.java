@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.business;
 
 
 import pageObjects.enums.Colors;

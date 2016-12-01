@@ -6,7 +6,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.ContactForm;
+import pageObjects.composite.ContactForm;
 import pageObjects.enums.Titles;
 
 public class ContactFormPage extends WebPage

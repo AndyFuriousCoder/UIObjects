@@ -6,7 +6,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.MetalAndColorsComponentForm;
+import pageObjects.composite.MetalAndColorsComponentForm;
 import pageObjects.enums.Titles;
 
 public class MetalAndColorsPage extends WebPage

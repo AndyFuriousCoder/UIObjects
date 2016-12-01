@@ -1,8 +1,7 @@
-package testCode;
+package testCode.testData;
 
 import org.testng.annotations.DataProvider;
-import pageObjects.Plate;
-import pageObjects.User;
+import pageObjects.business.User;
 
 public class LoginTestData
 {

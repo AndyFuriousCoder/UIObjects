@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.composite;
 
 import com.epam.jdi.uitests.core.interfaces.common.IButton;
 import com.epam.jdi.uitests.core.interfaces.common.ITextField;
@@ -7,6 +7,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import com.epam.web.matcher.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.business.Contact;
 import pageObjects.enums.Even;
 import pageObjects.enums.Odds;
 

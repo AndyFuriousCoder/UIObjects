@@ -7,7 +7,7 @@ import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.SearchBar;
+import pageObjects.composite.SearchBar;
 import pageObjects.enums.SiteMenu;
 import pageObjects.enums.SubMenu;
 import pageObjects.enums.Titles;

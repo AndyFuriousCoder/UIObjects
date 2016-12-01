@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.business;
 
 import pageObjects.enums.Even;
 import pageObjects.enums.Odds;

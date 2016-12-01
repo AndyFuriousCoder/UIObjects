@@ -1,8 +1,7 @@
-package testCode;
+package testCode.testData;
 
 import org.testng.annotations.DataProvider;
-import pageObjects.Contact;
-import pageObjects.DifferentElement;
+import pageObjects.business.DifferentElement;
 import pageObjects.enums.Colors;
 import pageObjects.enums.Metals;
 import pageObjects.enums.NaturalElements;

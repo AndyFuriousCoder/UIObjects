@@ -1,10 +1,7 @@
-package testCode;
+package testCode.testData;
 
 
 import org.testng.annotations.DataProvider;
-import pageObjects.Contact;
-import pageObjects.enums.Even;
-import pageObjects.enums.Odds;
 import pageObjects.enums.SiteMenu;
 import pageObjects.enums.Titles;
 

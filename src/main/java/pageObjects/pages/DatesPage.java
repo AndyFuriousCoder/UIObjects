@@ -2,7 +2,7 @@ package pageObjects.pages;
 
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.DatesPageForm;
+import pageObjects.composite.DatesPageForm;
 
 public class DatesPage extends WebPage
 {

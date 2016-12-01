@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.composite;
 
 
 import com.epam.jdi.uitests.web.selenium.elements.common.Button;
@@ -9,6 +9,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.business.Plate;
 import pageObjects.enums.*;
 
 public class MetalAndColorsComponentForm extends Form<Plate>

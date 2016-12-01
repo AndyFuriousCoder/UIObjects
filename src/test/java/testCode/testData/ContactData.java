@@ -1,8 +1,7 @@
-package testCode;
+package testCode.testData;
 
 import org.testng.annotations.DataProvider;
-import pageObjects.Contact;
-import pageObjects.Plate;
+import pageObjects.business.Contact;
 import pageObjects.enums.Even;
 import pageObjects.enums.Odds;
 
