@@ -1,1 +1,1 @@
-Ôאיכ ס עוסעמל src/test/java/testCode/SiteTest
+Test file: src/test/java/testCode/SiteTest.java
