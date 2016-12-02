@@ -13,4 +13,9 @@ public class User
         this.password = password;
         this.loginResult = loginResult;
     }
+
+    @Override
+    public String toString() {
+        return "User(" + login + ", " + password + ")";
+    }
 }
