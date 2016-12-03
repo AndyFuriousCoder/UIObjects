@@ -7,26 +7,53 @@ import org.openqa.selenium.support.FindBy;
 import pageObjects.business.User;
 
 import static com.epam.web.matcher.testng.Assert.assertTrue;
+import static pageObjects.pages.TestedEpamSite.homePage;
 
 public class LoginForm extends Form<User>
 {
     @FindBy(id = "Login")
-    private TextField login;
+    public TextField login;
 
     @FindBy(id = "Password")
-    private TextField password;
+    public TextField password;
 
     @FindBy(xpath = "//button[@type='submit']")
-    private Button loginButton;
+    public Button loginButton;
 
     @FindBy(css = ".logout")
-    private Button logoutButton;
+    public Button logoutButton;
 
     @FindBy(css = "span.login-txt")
-    private TextField loginFaild;
+    public TextField loginFaild;
 
     @FindBy(css = "li.dropdown.uui-profile-menu > a.dropdown-toggle")
     public Button loginFormOpenButton;
+
+    @FindBy(css = "div.profile-photo i.fa.fa-user")
+    public Button profilePhoto;
+
+    @FindBy(css = "a.dropdown-toggle div.profile-photo span")
+    public Button piterChailovsky;
+
+    public void isInState()
+    {
+        homePage.isOpened();
+        homePage.checkOpened();
+        if(profilePhoto.isDisplayed())
+        {
+            homePage.loginForm.loginFormOpenButton.click();
+            homePage.loginForm.submitLogin();
+        }
+
+    }
+    public void moveToState()
+    {
+        homePage.open();
+        homePage.checkOpened();
+        homePage.loginForm.loginFormOpenButton.click();
+        homePage.loginForm.submitLogin();
+        homePage.loginForm.loginFormOpenButton.click();
+    }
 
     public void submit(String loginText, String passwordText)
     {
@@ -35,27 +62,30 @@ public class LoginForm extends Form<User>
         loginButton.click();
     }
 
-    public void checkingLoginResult(User user)
-    {
-        if(user.loginResult)
-        {
-            assertTrue(logoutButton.isDisplayed());
-        }
-        else
-        {
-            assertTrue(loginFaild.isDisplayed());
-        }
-    }
-
     public void submitLogin()
     {
         submit("epam", "1234");
     }
 
-    public void loginOut()
+    public void logining(User user)
     {
         loginFormOpenButton.click();
-        if(logoutButton.isDisplayed()) logoutButton.click();
-        if(loginButton.isDisplayed()) loginFormOpenButton.click();
+        if(logoutButton.isDisplayed())
+        {
+            logoutButton.click();
+        }
+        if(loginButton.isDisplayed()) submit(user.name, user.password);
+        else
+        {
+            loginFormOpenButton.click();
+            submit(user.name, user.password);
+        }
+
+    }
+
+    public void successLogin(User user)
+    {
+        homePage.isOpened();
+        homePage.loginForm.login(user);
     }
 }

@@ -19,14 +19,7 @@ public class TestBase extends TestNGBase
         WebSite.init(TestedEpamSite.class);
         Verify.getFails();
         logger.info("Run Tests");
-    }
-
-    @BeforeTest
-    public void beforeTest() {
-        homePage.isOpened();
-        homePage.checkOpened();
-        homePage.loginForm.loginFormOpenButton.click();
-        homePage.loginForm.submitLogin();
+        homePage.loginForm.moveToState();
     }
 
     @AfterMethod

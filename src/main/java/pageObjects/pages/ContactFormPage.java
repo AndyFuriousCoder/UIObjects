@@ -3,11 +3,9 @@ package pageObjects.pages;
 
 import com.epam.jdi.uitests.web.selenium.elements.composite.Pagination;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
-import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.composite.ContactForm;
-import pageObjects.enums.Titles;
 
 public class ContactFormPage extends WebPage
 {
@@ -22,8 +20,4 @@ public class ContactFormPage extends WebPage
                                                     By.linkText("First"),
                                                     By.linkText("Last"));
 
-    public void checkFirst()
-    {
-        Assert.areEquals(getTitle(), Titles.CONTACT_FORM.value);
-    }
 }

@@ -16,4 +16,13 @@ public class DifferentElement
         this.metals = metals;
         this.colors = colors;
     }
+
+    @Override
+    public String toString() {
+        return "DifferentElement{" +
+                naturalElements +
+                ", " + metals +
+                ", " + colors +
+                '}';
+    }
 }

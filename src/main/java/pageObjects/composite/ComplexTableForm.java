@@ -4,10 +4,11 @@ import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.complex.Dropdown;
 import com.epam.jdi.uitests.web.selenium.elements.complex.table.Table;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
-import com.epam.web.matcher.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.enums.TableColumns;
+
+import static pageObjects.pages.TestedEpamSite.complexTablePage;
 
 public class ComplexTableForm extends Form<TableColumns>
 {
@@ -34,14 +35,11 @@ public class ComplexTableForm extends Form<TableColumns>
 
     public void selectColumn(TableColumns tableColumns)
     {
+        complexTablePage.open();
+        selectNothingColumns();
         columnDropdown.click();
         columnDropdown.select(tableColumns.value);
         columnDropdown.click();
         apply.click();
-    }
-
-    public void checkColumnVisible(TableColumns tableColumns)
-    {
-        Assert.assertTrue(complexTable.header(tableColumns.value).isDisplayed());
     }
 }

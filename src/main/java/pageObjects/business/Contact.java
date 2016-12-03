@@ -19,4 +19,15 @@ public class Contact
         this.highRadioButton = highRadioButton;
         this.lowRadioButton = lowRadioButton;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "'" + name + '\'' +
+                ", '" + lastName + '\'' +
+                ", '" + description + '\'' +
+                ", " + highRadioButton +
+                ", " + lowRadioButton +
+                '}';
+    }
 }

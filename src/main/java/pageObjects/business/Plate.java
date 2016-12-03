@@ -20,4 +20,15 @@ public class Plate
         this.metals = metals;
         this.food = food;
     }
+
+    @Override
+    public String toString() {
+        return "Plate{" + odds +
+                ", " + even +
+                ", " + naturalElements +
+                ", " + colors +
+                ", " + metals +
+                ", " + food +
+                '}';
+    }
 }

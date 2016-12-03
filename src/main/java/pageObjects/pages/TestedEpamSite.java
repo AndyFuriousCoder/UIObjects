@@ -5,21 +5,18 @@ import com.epam.jdi.uitests.web.selenium.elements.complex.Menu;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
-import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.composite.SearchBar;
 import pageObjects.enums.SiteMenu;
 import pageObjects.enums.SubMenu;
-import pageObjects.enums.Titles;
-
-import static com.epam.jdi.uitests.web.selenium.elements.composite.WebPage.getTitle;
+import pageObjects.composite.MainMenu;
 
 @JSite(domain = "https://jdi-framework.github.io/tests")
 public class TestedEpamSite extends WebSite
 {
 
     @FindBy(css = " div.uui-header.dark-gray nav ul.uui-navigation.nav.navbar-nav.m-l8")
-    public static Menu<SiteMenu> menu;
+    public static MainMenu menu;
 
     @FindBy(css = "ul.uui-navigation.nav.navbar-nav.m-l8 li.dropdown.open ul.dropdown-menu")
     public static Menu<SubMenu> subMenu;
@@ -53,11 +50,5 @@ public class TestedEpamSite extends WebSite
 
     @JPage (url = "/page8.htm", title = "Different Element")
     public static DifferentElementPage differentElementPage;
-
-    public static void checkSelectedPageTitle(Titles titles)
-    {
-        Assert.areEquals(getTitle(), titles.value);
-    }
-
 
 }

@@ -6,11 +6,12 @@ import com.epam.jdi.uitests.web.selenium.elements.complex.CheckList;
 import com.epam.jdi.uitests.web.selenium.elements.complex.Dropdown;
 import com.epam.jdi.uitests.web.selenium.elements.complex.RadioButtons;
 import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
-import com.epam.web.matcher.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.business.Plate;
 import pageObjects.enums.*;
+
+import static pageObjects.pages.TestedEpamSite.metalAndColorsPage;
 
 public class MetalAndColorsComponentForm extends Form<Plate>
 {
@@ -41,6 +42,7 @@ public class MetalAndColorsComponentForm extends Form<Plate>
 
     public void selectElements(Plate plate)
     {
+        metalAndColorsPage.open();
         odds.select(plate.odds);
         even.select(plate.even);
         naturalElements.select(plate.naturalElements);
@@ -52,13 +54,4 @@ public class MetalAndColorsComponentForm extends Form<Plate>
         food.select(plate.food);
         submit.click();
     }
-    public void checkResult(Plate plate)
-    {
-        Assert.contains(getDriver().findElement(By.cssSelector("li.summ-res")).getText(), (Integer.parseInt(plate.odds.value) + Integer.parseInt(plate.even.value)) + "");
-        Assert.contains(getDriver().findElement(By.cssSelector("li.elem-res")).getText(), plate.naturalElements.toString());
-        Assert.contains(getDriver().findElement(By.cssSelector("li.col-res")).getText(), plate.colors.toString());
-        Assert.contains(getDriver().findElement(By.cssSelector("li.met-res")).getText(), plate.metals.toString());
-        Assert.contains(getDriver().findElement(By.cssSelector("li.sal-res")).getText(), plate.food.toString());
-    }
-
 }

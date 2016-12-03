@@ -1,115 +1,114 @@
 package testCode;
 
+import com.epam.web.matcher.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.business.*;
 import pageObjects.enums.*;
+import pageObjects.pages.ContactFormPage;
+import pageObjects.pages.DifferentElementPage;
+import pageObjects.pages.MetalAndColorsPage;
 import testCode.testData.*;
-
+import static com.epam.jdi.uitests.web.selenium.elements.composite.WebPage.getTitle;
 import static pageObjects.pages.TestedEpamSite.*;
-
 
 public class SiteTest extends TestBase
 {
     // 1) Тест для логина
-    @Test(enabled = true, dataProviderClass = LoginTestData.class, dataProvider = "LoginTest")
-    public void checkingLoginTest(User user)
+    @Test(enabled = true, dataProviderClass = FalseLoginTestData.class, dataProvider = "LoginTest", groups = "LoginCheck")
+    public void checkingLoginFalseTest(User user)
     {
-        homePage.open();
-        homePage.loginForm.loginOut();
-        homePage.loginForm.login(user);
-        homePage.loginForm.checkingLoginResult(user);
-        homePage.loginForm.submitLogin();
+        homePage.loginForm.logining(user);
+        Assert.assertTrue(homePage.loginForm.loginFaild.isDisplayed());
     }
 
-    // 2) Тест навигации по главному меню
-    @Test(enabled = true, dataProviderClass = CheckingMenuData.class, dataProvider = "CheckingMenuTest")
+    // 2) Тест для ОК логина
+    @Test(enabled = true, dataProviderClass = SuccessLoginTestData.class, dataProvider = "LoginTest", groups = "LoginCheck")
+    public void checkingLoginSuccessTest(User user)
+    {
+        homePage.loginForm.successLogin(user);
+        Assert.assertTrue(homePage.loginForm.logoutButton.isDisplayed());
+    }
+
+    // 3) Тест навигации по главному меню
+    @Test(enabled = true, dataProviderClass = CheckingMenuData.class, dataProvider = "CheckingMenuTest", groups = "NavigationCheck")
     public void checkingMenu(SiteMenu siteMenu, Titles titles)
     {
         menu.select(siteMenu);
-        checkSelectedPageTitle(titles);
+        Assert.areEquals(getTitle(), titles.value);
     }
 
-    // 3) Тест навигации по меню сервиса
-    @Test(enabled = true, dataProviderClass = CheckingSubMenuData.class, dataProvider = "CheckingSubMenuTest")
+    // 4) Тест навигации по меню сервиса
+    @Test(enabled = true, dataProviderClass = CheckingSubMenuData.class, dataProvider = "CheckingSubMenuTest", groups = "NavigationCheck")
     public void checkingSubMenu(SubMenu subMenuElement, Titles titles)
     {
-        menu.select(SiteMenu.SERVICE);
-        subMenu.select(subMenuElement);
-        checkSelectedPageTitle(titles);
+        menu.select(SiteMenu.SERVICE, subMenuElement);
+        Assert.areEquals(getTitle(), titles.value);
     }
 
-    // 4) Тест для поисковой строки сверху
-    @Test(enabled = true, dataProviderClass = SearchData.class, dataProvider = "SearchTest")
+    // 5) Тест для поисковой строки сверху
+    @Test(enabled = true, dataProviderClass = SearchData.class, dataProvider = "SearchTest", groups = "NavigationCheck")
     public void checkingSearch(String text)
     {
         openSearchBar.click();
         searchBar.searchByStringText(text);
-        searchBar.checkSearchResult();
+        Assert.areEquals(getTitle(), Titles.SUPPORT.value);
     }
 
-    // 5) Тест для проверкии ContactForm
-    @Test(enabled = true, dataProviderClass = ContactData.class, dataProvider = "ContactFormTest")
+    // 6) Тест для проверкии ContactForm
+    @Test(enabled = true, dataProviderClass = ContactData.class, dataProvider = "ContactFormTest", groups = "PageElementsCheck")
     public void checkingContactForm(Contact contact)
     {
-        contactFormPage.open();
         contactFormPage.contactForm.inputContactData(contact);
-        contactFormPage.contactForm.checkResult(contact);
+        Assertion.checkContactFormResult(contact);
     }
 
-    // 6) Тест для страницы Different Elements
-    @Test(enabled = true, dataProviderClass = DifferentElementsData.class, dataProvider = "DifferentElementsTest")
+    // 7) Тест для страницы Different Elements
+    @Test(enabled = true, dataProviderClass = DifferentElementsData.class, dataProvider = "DifferentElementsTest", groups = "PageElementsCheck")
     public void checkingDifferentElementsForm(DifferentElement differentElement)
     {
-        differentElementPage.open();
         differentElementPage.differentElementForm.selectDifferentElements(differentElement);
-        differentElementPage.differentElementForm.checkDifferentElementSelection(differentElement);
+        Assertion.checkDifferentElementSelection(differentElement);
     }
 
-    // 7) Тест для страницы Metals and Colors
-    @Test(enabled = true, dataProviderClass = MetalAndColorsData.class, dataProvider = "MetalAndColorsTest")
+    // 8) Тест для страницы Metals and Colors
+    @Test(enabled = true, dataProviderClass = MetalAndColorsData.class, dataProvider = "MetalAndColorsTest", groups = "PageElementsCheck")
     public void checkingMetalAndColorsForm(Plate plate)
     {
-        metalAndColorsPage.open();
         metalAndColorsPage.componentForm.selectElements(plate);
-        metalAndColorsPage.componentForm.checkResult(plate);
+        Assertion.checkMetalAndColorsComponentFormResult(plate);
     }
 
-    // 8) Тест навигации на странице Metals and Colors, Contact Form
-    @Test(enabled = true)
+    // 9) Тест навигации на странице Metals and Colors, Contact Form
+    @Test(enabled = true, groups = "NavigationCheck")
     public void checkingSiteNavigation()
     {
         metalAndColorsPage.open();
         metalAndColorsPage.navigation.next(); //переход вправо
-        metalAndColorsPage.checkNext();
+        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
         metalAndColorsPage.navigation.previous();//переход влево
-        metalAndColorsPage.checkPrevious();
+        Assert.areEquals(DifferentElementPage.getTitle(), Titles.DIFFERENT_ELEMENTS.value);
         metalAndColorsPage.navigation.first();//переход на первую страницу
-        metalAndColorsPage.checkFirst();
+        Assert.areEquals(ContactFormPage.getTitle(), Titles.CONTACT_FORM.value);
         metalAndColorsPage.navigation.last();//попытка перехода с последней страницы на страницу "Last"
-        metalAndColorsPage.checkLast();
+        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
         contactFormPage.open();
         contactFormPage.navigation.first();//попытка перехода с первой страницы на страницу "First"
-        contactFormPage.checkFirst();
+        Assert.areEquals(getTitle(), Titles.CONTACT_FORM.value);
     }
 
-    // 9) Тест страницы Dates
-    @Test(enabled = true, dataProviderClass = DatesInputData.class, dataProvider = "DatesPageTest")
+    // 10) Тест страницы Dates
+    @Test(enabled = true, dataProviderClass = DatesInputData.class, dataProvider = "DatesPageTest", groups = "PageElementsCheck")
     public void checkingDatesPage(DatesInput datesInput)
     {
-        datesPage.open();
         datesPage.datesPageForm.inputDataOnPage(datesInput);
-        datesPage.datesPageForm.checkResult(datesInput);
-
+        Assertion.checkDatesPageResult(datesInput);
     }
 
-    //10) Тест страницы Complex Table
-    @Test(enabled = true, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest")
+    //11) Тест страницы Complex Table
+    @Test(enabled = true, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest", groups = "PageElementsCheck")
     public void checkingComplexTable(TableColumns tableColumns)
     {
-        complexTablePage.open();
-        complexTablePage.complexPageForm.selectNothingColumns();
         complexTablePage.complexPageForm.selectColumn(tableColumns);
-        complexTablePage.complexPageForm.checkColumnVisible(tableColumns);
+        Assert.assertTrue(complexTablePage.complexPageForm.complexTable.header(tableColumns.value).isDisplayed());
     }
-
 }

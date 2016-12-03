@@ -15,4 +15,15 @@ public class DatesInput
         this.firstRange = firstRange;
         this.secondRange = secondRange;
     }
+
+    @Override
+    public String toString() {
+        return "DatesInput{" +
+                "'" + name + '\'' +
+                ", '" + lastName + '\'' +
+                ", '" + description + '\'' +
+                ", '" + firstRange + '\'' +
+                ", '" + secondRange + '\'' +
+                '}';
+    }
 }

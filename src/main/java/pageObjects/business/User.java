@@ -3,19 +3,17 @@ package pageObjects.business;
 public class User
 {
 
-    public String login;
+    public String name;
     public String password;
-    public boolean loginResult;
 
-    public User(String login, String password, boolean loginResult)
+    public User(String login, String password)
     {
-        this.login = login;
+        this.name = login;
         this.password = password;
-        this.loginResult = loginResult;
     }
 
     @Override
     public String toString() {
-        return "User(" + login + ", " + password + ")";
+        return "User(" + name + ", " + password + ")";
     }
 }

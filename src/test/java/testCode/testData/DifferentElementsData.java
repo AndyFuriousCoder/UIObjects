@@ -13,7 +13,6 @@ public class DifferentElementsData
         return new Object[][] {{new DifferentElement(NaturalElements.Fire, Metals.Bronze, Colors.Blue)},
                                 {new DifferentElement(NaturalElements.Water, Metals.Gold, Colors.Green)},
                                 {new DifferentElement(NaturalElements.Earth, Metals.Silver, Colors.Yellow)},
-                                {new DifferentElement(NaturalElements.Wind, Metals.Selen, Colors.Green)},
-                                {new DifferentElement(NaturalElements.Water, Metals.Bronze, Colors.Yellow)}};
+                                {new DifferentElement(NaturalElements.Wind, Metals.Selen, Colors.Green)}};
     }
 }
