@@ -73,6 +73,7 @@ public class LoginForm extends Form<User>
         if(logoutButton.isDisplayed())
         {
             logoutButton.click();
+            loginFormOpenButton.click();
         }
         if(loginButton.isDisplayed()) submit(user.name, user.password);
         else
@@ -86,6 +87,7 @@ public class LoginForm extends Form<User>
     public void successLogin(User user)
     {
         homePage.isOpened();
-        homePage.loginForm.login(user);
+        if(!(piterChailovsky.isDisplayed())) homePage.loginForm.login(user);
+        else loginFormOpenButton.click();
     }
 }

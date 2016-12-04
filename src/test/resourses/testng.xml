@@ -8,11 +8,24 @@
             <run>
                 <include name = "LoginCheck"/>
                 <include name = "NavigationCheck"/>
-                <exclude name = "PageElementsCheck"/>
+                <include name = "PageElementsCheck"/>
             </run>
         </groups>
         <classes>
             <class name="testCode.SiteTest">
+                <methods>
+                    <include name="checkingLoginFalseTest"/>
+                    <include name="checkingLoginSuccessTest"/>
+                    <include name="checkingMenu"/>
+                    <include name="checkingSubMenu"/>
+                    <include name="checkingSearch"/>
+                    <include name="checkingContactForm"/>
+                    <include name="checkingDifferentElementsForm"/>
+                    <include name="checkingMetalAndColorsForm"/>
+                    <include name="checkingSiteNavigation"/>
+                    <include name="checkingDatesPage"/>
+                    <include name="checkingComplexTable"/>
+                </methods>
             </class>
         </classes>
     </test>

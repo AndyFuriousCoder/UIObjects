@@ -10,7 +10,10 @@ import static com.epam.jdi.uitests.core.settings.JDISettings.useDriver;
 import static com.epam.jdi.uitests.web.settings.WebSettings.getDriver;
 import static java.lang.System.getProperty;
 import static pageObjects.pages.TestedEpamSite.homePage;
+import org.testng.annotations.Listeners;
+import testCode.testData.CustomTestListener;
 
+@Listeners({CustomTestListener.class})
 public class TestBase extends TestNGBase
 {
     @BeforeSuite(alwaysRun = true)

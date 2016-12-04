@@ -27,7 +27,7 @@ public class Assertion
         {
             Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[5]")).getText(), differentElement.naturalElements.toString());
         }
-        catch(Exception e)
+        catch(Throwable e)
         {
             System.out.println("Verify error on " + Titles.DIFFERENT_ELEMENTS.value + " page: checkbox element " + differentElement.naturalElements);
         }
@@ -35,7 +35,7 @@ public class Assertion
         {
             Assert.contains(getDriver().findElement(By.xpath("//div[@id='mCSB_2_container']/section/div[2]/div/ul/li[4]")).getText(), differentElement.metals.toString());
         }
-        catch(Exception e)
+        catch(Throwable e)
         {
             System.out.println("Verify error on " + Titles.DIFFERENT_ELEMENTS.value + " page: radiobutton element " + differentElement.metals);
         }

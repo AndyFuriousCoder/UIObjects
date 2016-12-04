@@ -4,9 +4,6 @@ import com.epam.web.matcher.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.business.*;
 import pageObjects.enums.*;
-import pageObjects.pages.ContactFormPage;
-import pageObjects.pages.DifferentElementPage;
-import pageObjects.pages.MetalAndColorsPage;
 import testCode.testData.*;
 import static com.epam.jdi.uitests.web.selenium.elements.composite.WebPage.getTitle;
 import static pageObjects.pages.TestedEpamSite.*;
@@ -84,13 +81,13 @@ public class SiteTest extends TestBase
     {
         metalAndColorsPage.open();
         metalAndColorsPage.navigation.next(); //переход вправо
-        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
+        Assert.areEquals(getTitle(), Titles.METALS_COLORS.value);
         metalAndColorsPage.navigation.previous();//переход влево
-        Assert.areEquals(DifferentElementPage.getTitle(), Titles.DIFFERENT_ELEMENTS.value);
+        Assert.areEquals(getTitle(), Titles.DIFFERENT_ELEMENTS.value);
         metalAndColorsPage.navigation.first();//переход на первую страницу
-        Assert.areEquals(ContactFormPage.getTitle(), Titles.CONTACT_FORM.value);
+        Assert.areEquals(getTitle(), Titles.CONTACT_FORM.value);
         metalAndColorsPage.navigation.last();//попытка перехода с последней страницы на страницу "Last"
-        Assert.areEquals(MetalAndColorsPage.getTitle(), Titles.METALS_COLORS.value);
+        Assert.areEquals(getTitle(), Titles.METALS_COLORS.value);
         contactFormPage.open();
         contactFormPage.navigation.first();//попытка перехода с первой страницы на страницу "First"
         Assert.areEquals(getTitle(), Titles.CONTACT_FORM.value);
