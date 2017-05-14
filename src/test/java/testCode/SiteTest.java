@@ -101,7 +101,7 @@ public class SiteTest extends TestBase
         Assertion.checkDatesPageResult(datesInput);
     }
 
-    //11) Тест страницы Complex Table
+    //11) Тест страницы Complex Table///
     @Test(enabled = false, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest", groups = "PageElementsCheck")
     public void checkingComplexTable(TableColumns tableColumns)
     {
