@@ -102,7 +102,7 @@ public class SiteTest extends TestBase
     }
 
     //11) Тест страницы Complex Table
-    @Test(enabled = true, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest", groups = "PageElementsCheck")
+    @Test(enabled = false, dataProviderClass = CheckingComplexTableData.class, dataProvider = "CheckingComplexTableTest", groups = "PageElementsCheck")
     public void checkingComplexTable(TableColumns tableColumns)
     {
         complexTablePage.complexPageForm.selectColumn(tableColumns);
